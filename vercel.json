@@ -2,9 +2,14 @@
   "version": 2,
   "functions": {
     "api/**/*.js": {
-      "runtime": "nodejs20.x"
+      "runtime": "nodejs22.x"
     }
   },
+  "rewrites": [
+    { "source": "/", "destination": "/api/index" },
+    { "source": "/health", "destination": "/api/index" },
+    { "source": "/api/:path*", "destination": "/api/index" }
+  ],
   "env": {
     "WEG_API_URL": "https://ecatalog.weg.net/tec_cat/tech_motor_sel_functions.asp"
   }

@@ -1,6 +1,5 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import fetch from 'node-fetch';
 
 dotenv.config();
 
@@ -33,7 +32,7 @@ const getEfficiencyAndId = async (cd_produto, poles, outputHP) => {
   };
 
   try {
-    const response = await fetch(url, {
+  const response = await fetch(url, {
       method: 'POST',
       headers: {
         'User-Agent':
@@ -149,26 +148,30 @@ app.get('/api/motors/efficiency', async (req, res) => {
   }
 });
 
-// Rota de health check
-app.get('/health', (req, res) => {
+// Rota de health check (disponível em /health e /api/health)
+const healthHandler = (req, res) => {
   res.status(200).json({
     status: 'OK',
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
   });
-});
+};
+app.get('/health', healthHandler);
+app.get('/api/health', healthHandler);
 
-// Rota raiz
-app.get('/', (req, res) => {
+// Rota raiz (disponível em / e /api)
+const rootHandler = (req, res) => {
   res.status(200).json({
     message: 'Servidor Proxy Eletron - WEG Motor Efficiency API',
     version: '1.0.0',
     endpoints: {
       efficiency: '/api/motors/efficiency?poles=2&outputHP=7.5',
-      health: '/health',
+      health: '/api/health',
     },
   });
-});
+};
+app.get('/', rootHandler);
+app.get('/api', rootHandler);
 
 // Tratamento de erros 404
 app.use((req, res) => {
