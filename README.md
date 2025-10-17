@@ -38,7 +38,31 @@ npm start
 npm run dev
 ```
 
-O servidor iniciará em `http://localhost:3000`
+O servidor iniciará em `http://localhost:3000` (ou na porta definida pela variável `PORT`).
+
+## ☁️ Deploy na Vercel
+
+Este projeto já está preparado para deploy na Vercel como Funções Serverless:
+
+- A pasta `api/` contém o entrypoint `index.js` que exporta o app Express
+- O arquivo `vercel.json` define o runtime Node 20 e variáveis de ambiente
+- As rotas ficam disponíveis em `https://<seu-projeto>.vercel.app/api/motors/efficiency`
+
+### Passo a passo
+
+1. Faça login na Vercel e importe este repositório
+2. Nas configurações do projeto, garanta:
+  - Framework Preset: Other
+  - Build Command: (em branco)
+  - Output Directory: (em branco)
+  - Environment Variables: `WEG_API_URL` se desejar sobrescrever
+3. Deploy
+
+Após o deploy, teste:
+
+```
+GET https://<seu-projeto>.vercel.app/api/motors/efficiency?poles=2&outputHP=7.5
+```
 
 ## 📡 Endpoints
 

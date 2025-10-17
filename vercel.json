@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "env": {
+    "WEG_API_URL": "https://ecatalog.weg.net/tec_cat/tech_motor_sel_functions.asp"
+  }
+}
