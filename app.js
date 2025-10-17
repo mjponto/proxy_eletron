@@ -36,8 +36,17 @@ const getEfficiencyAndId = async (cd_produto, poles, outputHP) => {
       method: 'POST',
       headers: {
         'User-Agent':
-          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0 Safari/537.36',
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
         'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Origin': 'https://ecatalog.weg.net',
+        'Referer': 'https://ecatalog.weg.net/tec_cat/tech_motor_sel.asp',
+        'Connection': 'keep-alive',
+        'Sec-Fetch-Dest': 'empty',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Site': 'same-origin',
       },
       body: new URLSearchParams(payload),
     });
